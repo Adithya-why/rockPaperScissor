@@ -8,7 +8,25 @@
 </head>
 <body>
     <script type="text/javascript">
-        
+        function getcomputerChoice(){
+            let compChoice;
+            let choices = ["rock","paper","scissor"];
+            compChoice = choices[Math.floor(Math.random()*choices.length)];
+            return compChoice;
+        }
+
+        function singleRound(x,y){
+            if (x.toLowerCase() === "rock" && y.toLowerCase() === "rock"){
+                return "Tie : rock vs rock"
+            }
+
+        }
+
+        let playerSelection,computerSelection;
+        playerSelection = "Rock";
+        computerSelection = getcomputerChoice();
+        console.log(singleRound(playerSelection,computerSelection));
+
     </script>
 </body>
 </html>
