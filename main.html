@@ -8,24 +8,125 @@
 </head>
 <body>
     <script type="text/javascript">
+
+
+        var ywin = false;
+        var cwin = false;
+
+
         function getcomputerChoice(){
-            let compChoice;
-            let choices = ["rock","paper","scissor"];
+            var compChoice;
+            var choices = ["rock","paper","scissor"];
             compChoice = choices[Math.floor(Math.random()*choices.length)];
             return compChoice;
         }
 
         function singleRound(x,y){
             if (x.toLowerCase() === "rock" && y.toLowerCase() === "rock"){
-                return "Tie : rock vs rock"
+                cwin = ywin = false;
+                return "Tie : rock vs rock";
+                
+            }
+
+            else if(x.toLowerCase() === "rock" && y.toLowerCase() === "paper"){
+                cwin = true;
+                return "Computer wins: rock vs paper";
+                
+            }
+
+            else if(x.toLowerCase() === "rock" && y.toLowerCase() === "scissor"){
+                ywin=true;
+                return "You win: rock vs scissor";
+               
+            }
+
+            else if(x.toLowerCase() === "paper" && y.toLowerCase() === "rock"){
+                ywin=true;
+                return "You win: paper  vs rock";
+                
+            }
+
+            else if(x.toLowerCase() === "paper" && y.toLowerCase() === "paper"){
+                cwin = ywin = false;
+                return "Tie : paper vs paper";
+                
+
+            }
+
+
+            else if(x.toLowerCase() === "paper" && y.toLowerCase() === "scissor"){
+                cwin=true;
+                return "Computer wins : paper vs scissor";
+                
+            }
+
+
+            else if(x.toLowerCase() === "scissor" && y.toLowerCase() === "rock"){
+                cwin=true;
+                return "Computer wins: scissor vs rock";
+                
+            }
+
+            else if(x.toLowerCase() === "scissor" && y.toLowerCase() === "paper"){
+                ywin=true;
+                return "You win: scissor vs paper";
+                
+            }
+
+
+            else if(x.toLowerCase() === "scissor" && y.toLowerCase() === "scissor"){
+                cwin = ywin = false;
+
+                return "Tie: scissor vs scissors";
+                
             }
 
         }
 
-        let playerSelection,computerSelection;
-        playerSelection = "Rock";
+
+        
+
+        function game(){
+        
+        var ypoint=cpoint=0;
+        for(i=0;i<5;i++){
+
+        var playerSelection,computerSelection;
+        playerSelection = prompt('Enter your choice (rock/paper/scissor)');
         computerSelection = getcomputerChoice();
-        console.log(singleRound(playerSelection,computerSelection));
+
+            t = singleRound(playerSelection,computerSelection);
+            console.log(t);
+            console.log(ywin);
+            if (ywin==true && cwin==false){
+                ypoint+=1;
+                console.log(ypoint,cpoint);
+            }
+
+            else if(cwin==true && ywin==false){
+                cpoint+=1;
+                console.log(ypoint,cpoint);
+
+                
+            }
+        }
+        
+
+        if(ypoint>cpoint){
+            console.log("You win");
+        }
+
+        else if(cpoint>ypoint){
+            console.log("Computer wins");
+        }
+        
+        else if(cpoint==ypoint){
+            console.log("Its a Tie")
+        };
+        }
+
+        game();
+        
 
     </script>
 </body>
