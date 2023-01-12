@@ -128,20 +128,42 @@ function game(){
 
 
 
-
+   
+    
 
 
 if(ypoint>cpoint){
-    console.log("You win the game");
+    gw.textContent="You win the game";
 }
 
 else if(cpoint>ypoint){
-    console.log("Computer wins the game");
+    gw.textContent="Computer wins the game";
 }
 
 else if(cpoint==ypoint){
-    console.log("Its a Tie, both win the game")
+    gw.textContent="Its a Tie, both win the game";
 }
+
+
+br.removeEventListener('click',function(){
+    singleRound('rock');
+})
+
+bp.removeEventListener('click',function(){
+    singleRound('paper');
+})
+
+bs.removeEventListener('click',function(){
+    singleRound('scissor');
+})
+
+
+br.disabled=true;
+bs.disabled=true;
+bp.disabled=true;
+
+
+
 }
 
 
@@ -154,6 +176,8 @@ const bs = document.querySelector('#s');
 const ypo = document.querySelector('.ypoint')
 const cpo = document.querySelector('.cpoint')
 const rest = document.querySelector('.rest')
+
+const gw = document.querySelector('.gw');
 
 
 br.addEventListener('click',function(){
