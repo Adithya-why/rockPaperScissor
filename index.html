@@ -9,9 +9,9 @@
 <body>
 
 
-    <button>Rock</button>
-    <button>Paper</button>
-    <button>Scissor</button>
+    <button data-ch="rock" id="r">Rock</button>
+    <button data-ch="paper" id="p">Paper</button>
+    <button data-ch="scissor" id="s">Scissor</button>
 
 
 
@@ -37,6 +37,7 @@
 
         let ywin;
         let cwin;
+        let resultmsg;
 
 
         function getcomputerChoice(){
@@ -46,39 +47,39 @@
             return compChoice;
         }
 
-        function singleRound(x,y){
+        function singleRound(x,y=getcomputerChoice()){
             if (x.toLowerCase() === "rock" && y.toLowerCase() === "rock"){
                 cwin = false;
                 ywin = false;
-                return "Tie : rock vs rock";
+                resultmsg = "Tie : rock vs rock";
                 
             }
 
             else if(x.toLowerCase() === "rock" && y.toLowerCase() === "paper"){
                 cwin = true;
                 ywin = false;
-                return "Computer wins: rock vs paper";
+                resultmsg = "Computer wins: rock vs paper";
                 
             }
 
             else if(x.toLowerCase() === "rock" && y.toLowerCase() === "scissor"){
                 ywin=true;
                 cwin=false;
-                return "You win: rock vs scissor";
+                resultmsg = "You win: rock vs scissor";
                
             }
 
             else if(x.toLowerCase() === "paper" && y.toLowerCase() === "rock"){
                 ywin=true;
                 cwin=false;
-                return "You win: paper vs rock";
+                resultmsg ="You win: paper vs rock";
                 
             }
 
             else if(x.toLowerCase() === "paper" && y.toLowerCase() === "paper"){
                 cwin = false;
                 ywin = false;
-                return "Tie : paper vs paper";
+                resultmsg ="Tie : paper vs paper";
                 
 
             }
@@ -87,7 +88,7 @@
             else if(x.toLowerCase() === "paper" && y.toLowerCase() === "scissor"){
                 cwin=true;
                 ywin=false;
-                return "Computer wins : paper vs scissor";
+                resultmsg = "Computer wins : paper vs scissor";
                 
             }
 
@@ -95,14 +96,14 @@
             else if(x.toLowerCase() === "scissor" && y.toLowerCase() === "rock"){
                 cwin=true;
                 ywin=false;
-                return "Computer wins: scissor vs rock";
+                resultmsg = "Computer wins: scissor vs rock";
                 
             }
 
             else if(x.toLowerCase() === "scissor" && y.toLowerCase() === "paper"){
                 ywin=true;
                 cwin=false;
-                return "You win: scissor vs paper";
+                resultmsg = "You win: scissor vs paper";
                 
             }
 
@@ -111,7 +112,7 @@
                 cwin = false;
                 ywin = false;
 
-                return "Tie: scissor vs scissors";
+                resultmsg = "Tie: scissor vs scissors";
                 
             }
 
@@ -121,17 +122,22 @@
         
 
         function game(){
-        
         let ypoint=cpoint=0;
         
 
         let playerSelection,computerSelection;
-        playerSelection = prompt('Enter your choice (rock/paper/scissor)');
-        computerSelection = getcomputerChoice();
 
-        t = singleRound(playerSelection,computerSelection);
-        console.log(t);
-        console.log(ywin);
+
+        const br = document.querySelector('#r');
+        const bp = document.querySelector('#p');
+        const bs = document.querySelector('#s');
+
+        br.addEventListener('click',singleRound("rock"));
+        bp.addEventListener('click',singleRound("paper"));
+        bs.addEventListener('click',singleRound("scissor"));
+
+        
+       console.log(resultmsg);
 
         if(ywin==true && cwin==false){
                 ypoint+=1;
