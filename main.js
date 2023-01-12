@@ -90,7 +90,7 @@ function singleRound(x,y=getcomputerChoice()){
 
     if(ywin==true && cwin==false){
         ypoint+=1;
-        console.log(ypoint,cpoint);
+
        
         ypo.textContent=ypoint;
         cpo.textContent=cpoint;  
@@ -100,33 +100,37 @@ function singleRound(x,y=getcomputerChoice()){
 
     else if(cwin==true && ywin==false){
         cpoint+=1;
-        console.log(ypoint,cpoint);
+        ypo.textContent=ypoint;
+        cpo.textContent=cpoint; 
 
         
     }
 
     else if(cwin == false && ywin == false){
-        console.log(ypoint,cpoint);
+        ypo.textContent=ypoint;
+        cpo.textContent=cpoint; 
     }
 
     rest.textContent=resultmsg;
 
 
-
+    if(ypoint>=5 || cpoint>=5){
+        game();
+    }
 
 }
 
 
 
 
-/*function game(){
+function game(){
 
 
 
 
 
 
-if(cpoint>5 && ypoint>5){
+
 if(ypoint>cpoint){
     console.log("You win the game");
 }
@@ -139,7 +143,7 @@ else if(cpoint==ypoint){
     console.log("Its a Tie, both win the game")
 }
 }
-}*/
+
 
 
 const br = document.querySelector('#r');
